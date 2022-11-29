@@ -17,28 +17,32 @@
 </head>
 <body>
     <div id="app">
-        <div class="container d-flex flex-column align-items-center">
+        <div class="container">
             <header>
-                <h1>REMINDER</h1>
-                <div class="row row-cols-lg-auto g-3">
+                <h1>MY REMINDER</h1>
+                <div class="row row-cols-sm-auto g-3">
                     <div class="col-12">
-                        <input type="text" class="form-control " v-model="input" placeholder="things to remind...">
+                        <input type="text" class="form-control " v-model="input" placeholder="Things to remind..." @keyup.enter="add()">
+                        <div class="form-text">Click Add or press Enter</div>
                     </div>
                     <div class="col-12">
                         <button type="button" class="btn btn-primary" @click="add()">Add</button>
                     </div>
                 </div>
             </header>
-            <main>
+            <main class="my-5">
+                <h3>TO DO</h3>
+                <div class="form-text">Check to delete it (you can undo within 5s)</div>
                 <div class="row">
-                    <h3 class="p-0">TO DO</h3>
-                    <ul class="list-group">
-                        <li class="list-group-item" v-for="(task, index) in tasks" :key="index">
-                          <input class="form-check-input me-1" type="checkbox" value="">
-                          <label class="form-check-label">{{ task.text }}</label>
-                        </li>
-                        </li>
-                    </ul>
+                    <div class="col-5">
+                        <ul class="list-group">
+                            <li class="list-group-item" v-for="(task, index) in tasks">
+                              <input class="form-check-input me-1" :id="'checkID-'+index" type="checkbox"
+                              v-model="tasks[index].done" @click="remove()">
+                              <label class="form-check-label stretched-link" :for="'checkID-'+index">{{ task.text }}</label>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </main>
 
