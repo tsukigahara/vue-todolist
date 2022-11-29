@@ -31,9 +31,15 @@
                 </div>
             </header>
             <main class="my-5">
-                <h3>TO DO</h3>
+                <!-- TO DO title -->
+                <div class="d-flex align-items-center gap-2">
+                    <h3 class="d-inline m-0">TO DO</h3>
+                    <!-- task left counter -->
+                    <span class="badge bg-primary rounded-pill">{{ tasks.length }}</span>
+                </div>
                 <div class="form-text">Check to delete it (you can undo within 5s)</div>
-                <div class="row">
+                <!-- LIST GROUP -->
+                <div class="row my-3">
                     <div class="col-5">
                         <ul class="list-group">
                             <li class="list-group-item" v-for="(task, index) in tasks">
